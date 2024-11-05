@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:my_money/widgets/buttons.dart';
+import 'package:my_money/widgets/large_button.dart';
 
 import '../component/colors.dart';
 
@@ -63,47 +66,112 @@ class PaymentPage extends StatelessWidget {
                   color: Colors.grey.withOpacity(0.5)
                 )
               ),
-              child: Container(
-                child: Column(
-                  children: [
-                    Row(
+              child: MediaQuery.removePadding(
+                removeTop: true,
+                context: context,
+                child: ListView.builder(
+                  itemCount: 4,
+                  itemBuilder: (_, index) {
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                          margin: const EdgeInsets.only(top: 15, right: 20),
-                          width: 50,
-                          height: 50,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(25),
-                            color: Colors.green
-                          ),
-                          child: const Icon(Icons.done, size: 30, color: Colors.white,),
-                        ),
-                        const Column(
+                        Row(
                           children: [
-                            Text(
-                              "KenGen Power !",
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: AppColor.mainColor
+                            Container(
+                              margin: const EdgeInsets.only(top: 15, left: 20, bottom: 10),
+                              width: 50,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(25),
+                                  color: Colors.green
                               ),
+                              child: const Icon(Icons.done, size: 30, color: Colors.white,),
                             ),
-                            Text(
-                              "ID:3984754387",
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: AppColor.mainColor
-                              ),
+                            const SizedBox(width: 10,),
+                            Column(
+                              children: [
+                                const Text(
+                                  "KenGen Power !",
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                      color: AppColor.mainColor
+                                  ),
+                                ),
+                                const SizedBox(height: 10,),
+                                Text(
+                                  "ID:3984754387",
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                      color: AppColor.idColor
+                                  ),
+                                ),
+                              ],
                             ),
+                            const SizedBox(width: 20,),
+                            const Column(
+                              children: [
+                                Text(
+                                  "",
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w700,
+                                      color: AppColor.mainColor
+                                  ),
+                                ),
+                                SizedBox(height: 10,),
+                                Text(
+                                  "\$1240.00 ",
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w700,
+                                      color: AppColor.mainColor
+                                  ),
+                                ),
+                              ],
+                            )
                           ],
-                        )
+                        ),
+                        Divider(thickness: 2, color: Colors.grey.withOpacity(0.2),),
                       ],
-                    )
-                  ],
+                    );
+                  },
                 ),
               ),
-            )
+            ),
+            SizedBox(height: h*0.05,),
+            Column(
+              children: [
+                Text(
+                  "Total amount",
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: AppColor.idColor
+                  ),
+                ),
+                const SizedBox(height: 10,),
+                const Text(
+                  "4960.00",
+                  style: TextStyle(
+                      fontSize: 30,
+                      color: AppColor.mainColor,
+                    fontWeight: FontWeight.bold
+                  ),
+                )
+              ],
+            ),
+            SizedBox(height: h*0.10,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                AppButtons(icon: Icons.share, onTap: () {}, text: "Share",),
+                const SizedBox(width: 80,),
+                AppButtons(icon: Icons.print_outlined, onTap: () {}, text: "Print",)
+              ],
+            ),
+            SizedBox(height: h*0.02,),
+            AppLargeButton(text: "Done", backgroundColor: Colors.white, textColor: AppColor.mainColor, onTap: () { Get.back();},)
           ],
         ),
       ),

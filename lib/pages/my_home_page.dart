@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:my_money/component/colors.dart';
+import 'package:my_money/pages/payment_page.dart';
 import 'package:my_money/widgets/buttons.dart';
 import 'package:my_money/widgets/text_size.dart';
 
@@ -16,10 +18,9 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
-    double w = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: AppColor.backGroundColor,
-      body: Container(
+      body: SizedBox(
         height: h,
         child: Stack(
           children: [
@@ -36,7 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   _headSection () {
-    return Container(
+    return SizedBox(
       height: 310,
       child: Stack(
         children: [
@@ -89,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   _buttonContainer() {
     return Positioned(
-      right: 58,
+      right: 48,
         bottom: 15,
         child: GestureDetector(
           onTap: () {
@@ -99,7 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
               backgroundColor: Colors.transparent,
                 context: context, 
                 builder: (BuildContext bc){
-                  return Container(
+                  return SizedBox(
                     height: MediaQuery.of(context).size.height-240,
                     child: Stack(
                       children: [
@@ -112,7 +113,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             )
                         ),
                         Positioned(
-                          right: 58,
+                          right: 48,
                             child: Container(
                               padding: const EdgeInsets.only(top: 5, bottom: 25),
                               width: 60,
@@ -186,7 +187,7 @@ class _MyHomePageState extends State<MyHomePage> {
         removeTop: true,
         context: context,
         child: ListView.builder(
-          itemCount: 3,
+          itemCount: 10,
           itemBuilder: (_,index){
             return Container(
               margin: const EdgeInsets.only(top: 20, right: 20),
@@ -236,7 +237,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               ),
                             ),
                             const SizedBox(width: 10,),
-                            Column(
+                            const Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
@@ -289,7 +290,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
                                 )
                             ),
-                            Text(
+                            const Text(
                               '\$1240',
                               style: TextStyle(
                                 fontSize: 18,
@@ -308,7 +309,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             const SizedBox(height: 10,),
                           ],
                         ),
-                        SizedBox(width: 5,),
+                        const SizedBox(width: 5,),
                         Container(
                           width: 5,
                           height: 35,
@@ -333,9 +334,9 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   _payButton(){
-    return const Positioned(
+    return Positioned(
       bottom: 20,
-        child: AppLargeButton(text: "Pay all bills",textColor: Colors.white)
+        child: AppLargeButton(text: "Pay all bills",textColor: Colors.white, onTap: () { Get.to(() => const PaymentPage());},)
     );
   }
 
